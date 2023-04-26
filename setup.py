@@ -2,7 +2,7 @@ from setuptools import find_packages, setup
 setup(
     name='Project Stardust Auto',
     packages=find_packages(include=['Project_Stardust']),
-    version='0.1.0',
+    version='0.1.1',
     description='Python Library to play the roblox game Project Stardust',
     author='Kaleb Schmidlkofer',
     license='MIT',
