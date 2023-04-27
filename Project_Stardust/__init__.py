@@ -7,31 +7,31 @@ import keyboard
 teamcheck = False
 leftleft, lefttop, leftwidth, leftheight = 481, 400, 474, 400
 rightleft, righttop, rightwidth, rightheight = 1024, 415, 400, 353
-def tier(tier: int):
-  '''
-  NOT WORKING!
+# def tier(tier: int):
+#   '''
+#   NOT WORKING!
   
-  args:
-    tier(int): 1-3 select what tier to use
-  '''
-  tierfinder=[]
-  try:
-    print(f'tier{tier}.png')
-    position= pyautogui.locateOnScreen(f'tier{tier}.png', confidence=.2)
-    if position != None:
-      for pos in position:
-        tierfinder.append(pos)
-      pydirectinput.moveTo(tierfinder[0], tierfinder[1], tierfinder[2], tierfinder[3])
-      pydirectinput.leftClick()
-  except TypeError:
-    print('not found')
-    pass
+#   args:
+#     tier(int): 1-3 select what tier to use
+#   '''
+#   tierfinder=[]
+#   try:
+#     print(f'tier{tier}.png')
+#     position= pyautogui.locateOnScreen(f'tier{tier}.png', confidence=.2)
+#     if position != None:
+#       for pos in position:
+#         tierfinder.append(pos)
+#       pydirectinput.moveTo(tierfinder[0], tierfinder[1], tierfinder[2], tierfinder[3])
+#       pydirectinput.leftClick()
+#   except TypeError:
+#     print('not found')
+#     pass
 def start_game():
   '''
   Searches Screen for deploy button
   '''
   deploy_list=[]
-  position = pyautogui.locateCenterOnScreen('deploy.png', confidence=.7)
+  position = pyautogui.locateCenterOnScreen(f'{__path__[0]}/deploy.png', confidence=.7)
   if not position == None:
     for pos in position:
       deploy_list.append(pos)
@@ -54,11 +54,9 @@ def find_team():
   sleep(.1)
   scoreboardright = pyautogui.screenshot(region=(leftleft, lefttop, leftwidth, leftheight))
   scoreboardleft = pyautogui.screenshot(region=(rightleft, righttop, rightwidth, rightheight))
-  scoreboardleft.save('left.png')
-  scoreboardright.save('right.png')
   #! Left side of scoreboard
   try:
-    for pos in pyautogui.locateOnScreen('username.png', confidence=0.9, region=(leftleft, lefttop, leftwidth, leftheight)):
+    for pos in pyautogui.locateOnScreen(f'{__path__[0]}/username.png', confidence=0.9, region=(leftleft, lefttop, leftwidth, leftheight)):
       team_list.append(pos)
     pydirectinput.moveTo(team_list[0], team_list[1], team_list[2], team_list[3])
     keyboard.press_and_release('tab')
@@ -69,7 +67,7 @@ def find_team():
     pass
   #! Right side of scoreboard
   try:
-    for pos in pyautogui.locateOnScreen('username.png',confidence=.9, region=(rightleft, righttop, rightwidth, rightheight)):
+    for pos in pyautogui.locateOnScreen(f'{__path__[0]}/username.png',confidence=.9, region=(rightleft, righttop, rightwidth, rightheight)):
       team_list.append(pos)
     pydirectinput.moveTo(team_list[0], team_list[1], team_list[2], team_list[3])
     sleep(.1)
@@ -83,7 +81,7 @@ def find_team():
 def aim_toggle_on():
   aimoff_list=[]
   try:
-    for pos in pyautogui.locateCenterOnScreen('aimoff.png', confidence=0.9):
+    for pos in pyautogui.locateCenterOnScreen(f'{__path__[0]}/aimoff.png', confidence=0.9):
       aimoff_list.append(pos)
     else:
       pass
@@ -96,7 +94,7 @@ def aim_toggle_on():
     pass
 def death_screen():
   try:
-    if not pyautogui.locateCenterOnScreen('shipdestroyed.png', confidence=0.9) == None:
+    if not pyautogui.locateCenterOnScreen(f'{__path__[0]}/shipdestroyed.png', confidence=0.9) == None:
       global find_team_variable
       find_team_variable = 0
       print('Death Screen found.. ')

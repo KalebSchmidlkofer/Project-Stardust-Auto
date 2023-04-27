@@ -6,6 +6,8 @@ setup(
     description='Python Library to play the roblox game Project Stardust',
     author='Kaleb Schmidlkofer',
     license='MIT',
-    install_requires=['pyautogui', 'pydirectinput', 'keyboard', 'pillow'],
-    
+    install_requires=['pyautogui', 'pydirectinput', 'keyboard', 'pillow', 'opencv-python'],
+    package_data={
+    'Project_Stardust': ['*.png'],
+    }
 )
